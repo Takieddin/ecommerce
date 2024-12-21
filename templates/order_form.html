@@ -1,0 +1,12 @@
+<form method="POST" action="{{ url_for('submit_order', product_id=product.id) }}">
+    <input type="text" name="name" placeholder="Name" required>
+    <select name="wilaya" required>
+        {% for wilaya in wilayas %}
+        <option value="{{ wilaya }}">{{ wilaya }}</option>
+        {% endfor %}
+    </select>
+    <input type="text" name="address" placeholder="Address" required>
+    <input type="text" name="phone" placeholder="Phone" required>
+    <input type="number" name="quantity" placeholder="Quantity" required>
+    <button type="submit">Submit Order</button>
+</form>

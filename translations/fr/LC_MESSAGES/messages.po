@@ -1,0 +1,60 @@
+# French translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-12-18 18:56+0100\n"
+"PO-Revision-Date: 2024-12-18 18:57+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: templates/base.html:6
+msgid "E-Commerce"
+msgstr ""
+
+#: templates/base.html:23
+msgid "MyShop"
+msgstr ""
+
+#: templates/product.html:12
+msgid "Product Image"
+msgstr ""
+
+#: templates/product.html:17
+msgid "Previous"
+msgstr "precedent"
+
+#: templates/product.html:20
+msgid "Next"
+msgstr "suivant"
+
+#: templates/product.html:33
+msgid "Your Name"
+msgstr " Nom"
+
+#: templates/product.html:35
+msgid "Phone Number"
+msgstr "N telephone"
+
+#: templates/product.html:37
+msgid "Your Address"
+msgstr "address"
+
+#: templates/product.html:39
+msgid "Quantity"
+msgstr "Quantite"
+
+#: templates/product.html:44
+msgid "Place Order"
+msgstr "commender"
+

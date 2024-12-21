@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block title %}Orders{% endblock %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Orders</h1>
+<form method="GET" class="mb-4">
+    <input type="text" name="filter_value" placeholder="Filter value" class="border p-2 rounded">
+    <select name="filter_by" class="border p-2 rounded">
+        <option value="name">Name</option>
+        <option value="address">Address</option>
+        <option value="phone">Phone</option>
+        <option value="wilaya">Wilaya</option>
+        <option value="quantity">Quantity</option>
+        <option value="status">Status</option>
+    </select>
+    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Filter</button>
+</form>
+<table class="w-full border-collapse border border-gray-300">
+    <thead>
+        <tr>
+            <th class="border p-2"><a href="?sort_by=name&order={{ 'desc' if request.args.get('order') == 'asc' else 'asc' }}">Name</a></th>
+            <th class="border p-2"><a href="?sort_by=address&order={{ 'desc' if request.args.get('order') == 'asc' else 'asc' }}">Address</a></th>
+            <th class="border p-2"><a href="?sort_by=phone&order={{ 'desc' if request.args.get('order') == 'asc' else 'asc' }}">Phone</a></th>
+            <th class="border p-2"><a href="?sort_by=wilaya&order={{ 'desc' if request.args.get('order') == 'asc' else 'asc' }}">Wilaya</a></th>
+            <th class="border p-2"><a href="?sort_by=quantity&order={{ 'desc' if request.args.get('order') == 'asc' else 'asc' }}">Quantity</a></th>
+            <th class="border p-2"><a href="?sort_by=status&order={{ 'desc' if request.args.get('order') == 'asc' else 'asc' }}">Status</a></th>
+            <th class="border p-2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td class="border p-2">{{ order.name }}</td>
+            <td class="border p-2">{{ order.address }}</td>
+            <td class="border p-2">{{ order.phone }}</td>
+            <td class="border p-2">{{ order.wilaya }}</td>
+            <td class="border p-2">{{ order.quantity }}</td>
+            <td class="border p-2">{{ order.status }}</td>
+            <td class="border p-2">
+                <form method="POST" class="inline">
+                    <input type="hidden" name="order_id" value="{{ order.id }}">
+                    <select name="status" class="border p-2 rounded">
+                        <option value="ordered" {% if order.status == 'ordered' %}selected{% endif %}>Ordered</option>
+                        <option value="confirmed" {% if order.status == 'confirmed' %}selected{% endif %}>Confirmed</option>
+                        <option value="canceled" {% if order.status == 'canceled' %}selected{% endif %}>Canceled</option>
+                        <option value="delivering" {% if order.status == 'delivering' %}selected{% endif %}>Delivering</option>
+                        <option value="arrived" {% if order.status == 'arrived' %}selected{% endif %}>Arrived</option>
+                        <option value="returning" {% if order.status == 'returning' %}selected{% endif %}>Returning</option>
+                        <option value="returned" {% if order.status == 'returned' %}selected{% endif %}>Returned</option>
+                    </select>
+                    <button type="submit" name="action" value="update" class="bg-green-500 text-white px-4 py-2 rounded">Update</button>
+                </form>
+                <form method="POST" class="inline">
+                    <input type="hidden" name="order_id" value="{{ order.id }}">
+                    <button type="submit" name="action" value="delete" class="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="7" class="border p-4 text-center">No orders found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

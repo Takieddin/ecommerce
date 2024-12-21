@@ -1,0 +1,61 @@
+# Arabic translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-12-18 18:56+0100\n"
+"PO-Revision-Date: 2024-12-18 18:57+0100\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ar\n"
+"Language-Team: ar <LL@li.org>\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : "
+"n%100>=3 && n%100<=10 ? 3 : n%100>=0 && n%100<=2 ? 4 : 5);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: templates/base.html:6
+msgid "E-Commerce"
+msgstr ""
+
+#: templates/base.html:23
+msgid "MyShop"
+msgstr ""
+
+#: templates/product.html:12
+msgid "Product Image"
+msgstr ""
+
+#: templates/product.html:17
+msgid "Previous"
+msgstr "السابق"
+
+#: templates/product.html:20
+msgid "Next"
+msgstr "التالي"
+
+#: templates/product.html:33
+msgid "Your Name"
+msgstr "اسمك"
+
+#: templates/product.html:35
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#: templates/product.html:37
+msgid "Your Address"
+msgstr "العنوان"
+
+#: templates/product.html:39
+msgid "Quantity"
+msgstr "الكمية"
+
+#: templates/product.html:44
+msgid "Place Order"
+msgstr "طلب الان"
+

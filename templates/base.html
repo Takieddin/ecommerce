@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale }}" dir="{% if get_locale == 'ar' %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin Panel{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Arabic-specific font */
+        @font-face {
+            font-family: 'CustomArabicFont';
+            src: url('{{ url_for('static', filename='fonts/arabic-font.woff2') }}') format('woff2');
+        }
+
+        body[dir="rtl"] {
+            font-family: 'CustomArabicFont', sans-serif;
+        }
+
+        /* Sticky footer styles */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div>
+                <a href="{{ url_for('admin_panel') }}" class="text-white px-4">Home</a>
+                <a href="{{ url_for('admin_orders', product_id=1) }}" class="text-white px-4">Orders</a>
+            </div>
+            <div>
+                <a href="{{ url_for('set_language', lang='en') }}" class="text-white px-2">EN</a>
+                <a href="{{ url_for('set_language', lang='fr') }}" class="text-white px-2">FR</a>
+                <a href="{{ url_for('set_language', lang='ar') }}" class="text-white px-2">AR</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto mt-4">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-200 text-center p-4">
+        <p>&copy; 2024 MyShop. {% trans %}All rights reserved.{% endtrans %}</p>
+        <p>
+            <a href="#" class="text-blue-400 hover:underline">{% trans %}Privacy Policy{% endtrans %}</a> |
+            <a href="#" class="text-blue-400 hover:underline">{% trans %}Terms of Service{% endtrans %}</a>
+        </p>
+    </footer>
+</body>
+</html>
