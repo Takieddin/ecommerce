@@ -19,7 +19,7 @@
             <tr>
                 <td class="border p-2">{{ product.name }}</td>
                 <td class="border p-2">{{ product.description }}</td>
-                <td class="border p-2">${{ product.price }}</td>
+                <td class="border p-2">{{ product.price }} DA</td>
                 <td class="border p-2">
                     <a href="{{ url_for('product_detail', product_id=product.id) }}" target="_blank">Order Product</a>
                 </td>
