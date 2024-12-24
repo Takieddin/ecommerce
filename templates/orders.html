@@ -22,6 +22,7 @@
             <th class="border p-2"><a href="?sort_by=phone&order={{ 'desc' if request.args.get('order') == 'asc' else 'asc' }}">Phone</a></th>
             <th class="border p-2"><a href="?sort_by=wilaya&order={{ 'desc' if request.args.get('order') == 'asc' else 'asc' }}">Wilaya</a></th>
             <th class="border p-2"><a href="?sort_by=quantity&order={{ 'desc' if request.args.get('order') == 'asc' else 'asc' }}">Quantity</a></th>
+            <th class="border p-2"><a href="?sort_by=date&order={{ 'desc' if request.args.get('order') == 'asc' else 'asc' }}">Date</a></th>
             <th class="border p-2"><a href="?sort_by=status&order={{ 'desc' if request.args.get('order') == 'asc' else 'asc' }}">Status</a></th>
             <th class="border p-2">Actions</th>
         </tr>
@@ -34,9 +35,10 @@
             <td class="border p-2">{{ order.phone }}</td>
             <td class="border p-2">{{ order.wilaya }}</td>
             <td class="border p-2">{{ order.quantity }}</td>
+            <td class="border p-2">{{ order.date.strftime('%Y-%m-%d %H:%M:%S') }}</td>
             <td class="border p-2">{{ order.status }}</td>
             <td class="border p-2">
-                <form method="POST" class="inline">
+                <form method="POST" action="{{ url_for('admin_orders', product_id=order.product_id) }}" class="inline">
                     <input type="hidden" name="order_id" value="{{ order.id }}">
                     <select name="status" class="border p-2 rounded">
                         <option value="ordered" {% if order.status == 'ordered' %}selected{% endif %}>Ordered</option>
@@ -49,7 +51,7 @@
                     </select>
                     <button type="submit" name="action" value="update" class="bg-green-500 text-white px-4 py-2 rounded">Update</button>
                 </form>
-                <form method="POST" class="inline">
+                <form method="POST" action="{{ url_for('admin_orders', product_id=order.product_id) }}" class="inline">
                     <input type="hidden" name="order_id" value="{{ order.id }}">
                     <button type="submit" name="action" value="delete" class="bg-red-500 text-white px-4 py-2 rounded">Delete</button>
                 </form>
@@ -57,7 +59,7 @@
         </tr>
         {% else %}
         <tr>
-            <td colspan="7" class="border p-4 text-center">No orders found.</td>
+            <td colspan="8" class="border p-4 text-center">No orders found.</td>
         </tr>
         {% endfor %}
     </tbody>

@@ -88,8 +88,7 @@ def submit_order(product_id):
     db.session.add(order)
     db.session.commit()
 
-    return "Order submitted successfully!"
-
+    return render_template('order_confirmation.html')
 
 @app.route('/admin/orders/<int:product_id>', methods=['GET', 'POST'])
 def admin_orders(product_id):

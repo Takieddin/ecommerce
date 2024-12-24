@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Order Confirmation{% endblock %}
+{% block content %}
+<div class="max-w-3xl mx-auto bg-white p-6 shadow rounded-lg mt-6 text-center">
+    <h1 class="text-4xl font-bold mb-4 text-green-600">Order Placed Successfully!</h1>
+    <p class="text-lg text-gray-700 mb-6">Thank you for your order. We will process it shortly.</p>
+    <div class="flex justify-center mb-6">
+        <svg class="w-16 h-16 text-green-600 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m0 0a9 9 0 11-4-4 9 9 0 014 4z"></path>
+        </svg>
+    </div>
+    <a href= class="bg-blue-600 text-white font-bold py-3 px-6 rounded hover:bg-blue-700 transition duration-300 ease-in-out">Continue Shopping</a>
+</div>
+{% endblock %}
