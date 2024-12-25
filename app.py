@@ -47,7 +47,7 @@ class Product(db.Model):
     price = db.Column(db.Float)
     images = db.Column(db.Text)  # Store comma-separated image filenames
 
-class Order(db.Model):
+class Orders(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
     name = db.Column(db.String(100))
@@ -84,7 +84,7 @@ def submit_order(product_id):
     wilaya = request.form['wilaya']
     quantity = request.form['quantity']
 
-    order = Order(product_id=product_id, name=name, address=address, phone=phone, wilaya=wilaya, quantity=quantity)
+    order = Orders(product_id=product_id, name=name, address=address, phone=phone, wilaya=wilaya, quantity=quantity)
     db.session.add(order)
     db.session.commit()
 
@@ -97,11 +97,11 @@ def admin_orders(product_id):
         action = request.form['action']
         if action == 'update':
             status = request.form['status']
-            order = Order.query.get(order_id)
+            order = Orders.query.get(order_id)
             order.status = status
             db.session.commit()
         elif action == 'delete':
-            order = Order.query.get(order_id)
+            order = Orders.query.get(order_id)
             db.session.delete(order)
             db.session.commit()
 
@@ -110,15 +110,15 @@ def admin_orders(product_id):
     filter_by = request.args.get('filter_by')
     filter_value = request.args.get('filter_value')
 
-    query = Order.query.filter_by(product_id=product_id)
+    query = Orders.query.filter_by(product_id=product_id)
 
     if filter_by and filter_value:
-        query = query.filter(getattr(Order, filter_by).like(f"%{filter_value}%"))
+        query = query.filter(getattr(Orders, filter_by).like(f"%{filter_value}%"))
 
     if order == 'asc':
-        query = query.order_by(getattr(Order, sort_by).asc())
+        query = query.order_by(getattr(Orders, sort_by).asc())
     else:
-        query = query.order_by(getattr(Order, sort_by).desc())
+        query = query.order_by(getattr(Orders, sort_by).desc())
 
     orders = query.all()
     return render_template('orders.html', orders=orders, product_id=product_id)
